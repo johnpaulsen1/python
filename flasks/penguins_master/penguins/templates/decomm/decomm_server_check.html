@@ -1,0 +1,98 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/decomm-style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/table-fixed-header-style.css" type="text/css">
+
+<head>
+  <title>Penguins - Decomm Confirmation</title>
+  <script src="/static/javascript/check_all_checkboxes.js"></script>
+  <script src="/static/javascript/create_html_element.js"></script>
+</head>
+
+<body class="decomm-body">
+  <form method="POST">
+    <!-- <div class="decomm_menu"> -->
+    <div class="decomm-table-menu-screen">
+    <div class="decomm-app-title">
+      <h1>Pre-Decommission Confirmation Page</h1>
+    </div>
+    <div class="menu-form">
+    <div class="control-group">
+      <div class = "text_results">
+        <div class="control-group-small">
+        
+        <div class="tableFixHeadDecomms">
+        <table class="centre">
+          <thead>
+            <tr>
+              <th> hostname </th>
+              <th> puppet decomm </th>
+              <th> chef decomm </th>
+              <th> vsphere decomm </th>
+              <th> vm delete date </th>
+              <th> satellite decomm </th>
+              <th> non-VMware power down </th>
+              <th> tmc db clean-up </th>
+              <th> check all </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {% for key in serversDict.keys() %}
+              <tr>
+                <td>{{ key }}</td>
+                  {% for value in serversDict[key] %}
+                  <td>
+                    <div class="text_results">
+                      <div class="decomm-request-text checkbox-container" id="table_body_{{ key }}-{{ value }}"></div>
+                      <script type="text/javascript">
+                        createHtmlElement({{key|tojson}}, {{value|tojson}}, {{vmDeleteDate|tojson}});
+                      </script>
+                    </div>
+                  </td>
+                  {% endfor %}
+                  <td>
+                    <label class="decomm-request-text checkbox-container">
+                      <input type="checkbox" id="{{ key }}" name="{{ key }}" onClick="toggle_checkbox(this);" value="{{ key }}" checked/>
+                    </label>
+                  </td>
+              </tr>
+              </tr>
+              {% endfor %}
+          </tbody>
+         </table>
+         </div>
+
+       </div>
+     </div>
+
+
+      <div class = "{{ setDecommNowVisibility }} control-group">
+      <div class="control-group-give-space-before">
+        <label class="decomm-request-text checkbox-container" style="font-weight: bold; word-wrap: break-word;">
+          <input type="checkbox" id="decomm" name="proceed_decomm" value="proceed"/>
+          <label for="decomm" class="give-space decomm-label">Are you sure you want to DECOMM these?</label>
+        </label>
+      </div>
+        <div class="control-group-give-space-after">
+          <input style="font-weight: bold;" type="submit" value="Decomm NOW!" class="btn btn-decomm-alt1" name="submit_button">
+        </div>
+      </div>
+
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-decomm-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-decomm-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    <!-- </div> -->
+  </form>
+</body>

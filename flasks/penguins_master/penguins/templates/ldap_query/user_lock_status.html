@@ -1,0 +1,47 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/ldap-style.css" type="text/css">
+<title>LDAP - User Lock Status</title>
+<body class="ldap-body">
+  <form method="POST">
+    <div class="ldap_menu">
+    <div class="menu-screen ldap-menu-bg">
+    <div class="app-title">
+      <h1>LDAP - Check Lock Status of User</h1>
+    </div>
+    <div class="menu-form">
+    <div class="control-group">
+      <input type="text" class="login-field" value="" placeholder="username" name="username">
+      <label class="login-field-icon fui-user" for="login-name"></label>
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Search" class="btn btn-ldap-alt1" name="submit_button">
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-ldap-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-ldap-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    </div>
+  </form>
+
+<form method="POST" class = {{ setVisibility }}>
+  <div class="ldap_group_menu">
+  <div class="menu-screen ldap-menu-bg">
+  <div class="menu-form">
+    <div class = {{ userLockDisplay }}>
+      {{ lockStatus }}
+    </div>
+  </div>
+  </div>
+  </div>
+</form>
+</body>

@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: Arial;
+  background-color: #02bdb3;
+  padding: 50px;
+}
+
+input {
+  text-align: center;
+  background-color: #ecf0f1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+}
+input:focus {
+  border: 2px solid #3498db;
+  box-shadow: none;
+}
+
+.visibility_off {
+  display: none;
+}
+
+.visibility_on {
+  display: block;
+}
+
+.nobull {
+  list-style-type: none;
+}
+
+.menu {
+  margin: 20px auto;
+  width: 600px;
+}
+.menu-options {
+  margin: 20px auto;
+  width: 300px;
+}
+.menu-screen {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+.menu-form {
+  text-align: center;
+}
+
+.app-title {
+  text-align: center;
+  color: #777;
+}
+
+.control-group {
+  margin-bottom: 10px;
+}
+.control-group-small {
+  margin-bottom: 5px;
+}
+.control-group-contents {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.control-group-give-space-before {
+  margin: 0;
+  margin-top: 30px;
+}
+.control-group-give-space-after {
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.floated_center {
+  text-align: center;
+}
+
+.btn {
+  border: 2px solid transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn-back {
+  background: #00a69d;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-back:hover {
+  background-color: #009991;
+  cursor: pointer;
+}
+.btn-logout {
+  background: #218e88;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-logout:hover {
+  background-color: #1d7772;
+  cursor: pointer;
+}
+
+.btn-alt1 {
+  background: #19b8a0;
+  color: #2c4257;
+}
+.btn-alt1:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+.btn-alt2 {
+  background: #18ab95;
+  color: #eeeeee;
+}
+.btn-alt2:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.floated_left_btn {
+  display: inline-block;
+  margin-right: 10px;
+}
+.floated_left_text {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 10px;
+  max-width: 200px;
+  min-width: 200px;
+}
+.text_left {
+  text-align: left;
+  clear: both;
+}
+.text_center {
+  text-align: center;
+  clear: both;
+}
+.floated_right_btn {
+  display: inline-block;
+  margin-left: 10px;
+}
+.floated_right_text {
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 10px;
+  max-width: 400px;
+  min-width: 400px;
+}
+.text_right {
+  text-align: right;
+  clear: both;
+}
+.text_results {
+  background: #f0f0f0;
+  color: #107e77;
+}
+
+.text_results_heading {
+  color: #107e77;
+  text-align: center;
+}
+.text_bold {
+  font-weight: bold;
+}

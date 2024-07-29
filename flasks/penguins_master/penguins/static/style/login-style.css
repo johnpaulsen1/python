@@ -1,0 +1,147 @@
+body {
+  padding: 0px;
+}
+
+.login-body {
+  background-color: #808080;
+}
+
+.put-background-image {
+  position: relative;
+  width: 74%;
+  height: 84.5%;
+  filter: grayscale(95%);
+  top: 0;
+  left: 0;
+  /* margin-left: -80px; */
+  z-index: 2;
+}
+
+.login-app-title {
+  display:inline-block;
+  position: relative;
+  z-index: 3;
+  color: #01AAAD;
+  -webkit-text-stroke: 1px #2e1706;
+  font-size: 25px;
+  margin-left: -20px;
+  margin-bottom: -35px;
+}
+
+.small-penguins-logo {
+  position: relative;
+  z-index: 3;
+  width: 10%;
+  height: 10%;
+  margin-bottom: -75px;
+}
+
+.title_left_image {
+  /* display: inline-block; */
+  margin-left: 10px;
+  z-index: 3;
+  position: relative;
+}
+
+.small-idigi-logo {
+  position: relative;
+  z-index: 3;
+  width: 38%;
+  height: 38%;
+  margin-bottom: -40px;
+}
+
+.title_middle_image {
+  /* display: inline-block; */
+  position: relative;
+  z-index: 4;
+  width: 35%;
+  height: 35%;
+  margin-left: 110px;
+  margin-bottom: -60px;
+}
+
+.title_right_text {
+  margin-left: 262px;
+  z-index: 5;
+  position: relative;
+  /* margin-bottom: -45px; */
+}
+
+.login {
+  position: relative;
+  top: 60%;
+  margin-top: -250px;
+}
+
+.login-splash {
+  background-color: #01AAAD;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  height: 210px;
+  opacity: 70%;
+  position: relative;
+  z-index: 1;
+}
+.info-splash {
+  background-color: #fce9d7;
+  border-color: #f47a1a;
+  border-style: double;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  /* height: 210px; */
+  opacity: 70%;
+  position: relative;
+  z-index: 1;
+}
+.error-splash {
+  background-color: #ffcccc;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  /* height: 210px; */
+  opacity: 70%;
+  position: relative;
+  z-index: 1;
+}
+.text-padding {
+  padding: 5px;
+}
+
+.login-form {
+  text-align: left;
+  margin-top: -210px;
+  padding: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.login-field {
+  width: 315px;
+  color: #9c4d11;
+}
+
+.btn {
+  width: 315px;
+  text-align: center;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-login {
+  background-color: transparent;
+  border: 3px solid #00ffe7;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #00ffe7;
+}
+.btn-login:hover {
+  box-shadow: 0 0 10px 0 #00ffe7 inset, 0 0 20px 2px #00ffe7;
+  border: 3px solid #00ffe7;
+}

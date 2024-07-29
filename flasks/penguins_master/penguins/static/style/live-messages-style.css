@@ -1,0 +1,43 @@
+.live-messages_menu {
+  margin: 20px auto;
+  width: 600px;
+}
+
+.btn-live-messages-back {
+  background: #294662;
+  color: #ffffff;
+}
+.btn-live-messages-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-live-messages-logout {
+  background: #2C4257;
+  color: #ffffff;
+}
+.btn-live-messages-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.live-messages-body {
+  background: url("/static/images/live-messages.png") center  #4b948d;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: Arial;
+  padding: 50px;
+}
+
+.live-messages-menu-bg {
+  background-color: #e7e7e7;
+  border-style: solid;
+  border-color: #2C4257;
+}
+
+.live-messages-app-title {
+  text-align: center;
+  color: #2C4257;
+}

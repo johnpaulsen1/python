@@ -1,0 +1,62 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/login-style.css" type="text/css">
+
+<head>
+  <title>Penguins - Login</title>
+  <script src="/static/javascript/show_user_message.js"></script>
+</head>
+
+<body class="login-body">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/static/javascript/socketio.js"></script>
+<form method="POST">
+  <div>
+    <img src="/static/images/penguins_main.png" class="put-background-image">
+  </div>
+
+  <div class="login">
+    <div class="login-app-title">
+      <div class="title_left_image">
+        <img src="/static/images/penguins_main.png" class="small-penguins-logo">
+      </div>
+      <div class="title_middle_image">
+        <img src="/static/images/idigitech.png" class="small-idigi-logo">
+      </div>
+      <div class="title_right_text">
+        <h1>Automation</h1>
+      </div>
+    </div>
+
+    <div class="login-splash"></div>
+
+    <div class="login-form">
+      <div class="control-group">
+        <input type="text" class="login-field" placeholder="username" name="username" required>
+      </div>
+      <div class="control-group">
+        <input type="password" class="login-field" placeholder="password" name="password" required>
+      </div>
+      <div class="control-group">
+        <button id="btn_login" value="Log in" class="btn btn-login" name="submit_button" onclick="JavaScript:showUserMessage()">Log in</button>
+      </div>
+    </div>
+
+    <div class="info-splash control-group visibility_off" id="info-splash-div">
+      <span style="color:#f47a1a; font-weight: bold;">
+        <p id="user_info_message" color="orange">{{ userMessage }}</p>
+      </span>
+    </div>
+
+    <div class="error-splash control-group {{ setErrorVisibility }}">
+      {% for message in get_flashed_messages() %}
+      <div class="flash text-padding">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</form>
+</body>

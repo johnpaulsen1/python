@@ -1,0 +1,157 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/graphs-style.css" type="text/css">
+<head>
+  <title>{{ title }}</title>
+  <script src="/static/javascript/colour_randomiser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js" integrity="sha512-vJLAMsHIpI7ORUMpudTJNz+wRNnPQAkHVlnpgpVxXI0lPnKcQ38Psu0APJ2r3nhhBHNIcQPRVrlkHiAeQHADTA==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <form method="POST">
+    <div class="graph_menu-screen">
+    <center>
+      <h2>{{ title }}</h2>
+    </center>
+    <div class="control-group-small radio-buttons-label">
+      <p>Please select graph type:</p>
+    </div>
+    <div class="control-group-small general-radio-buttons">
+      <input type="radio" id="bar" name="graph_type" value="Bar Graph" checked onclick="handleClick(this);">
+      <label class="radio-labels" for="bar">Bar Graph</label><br>
+
+      <input type="radio" id="pie" name="graph_type" value="Pie Graph" onclick="handleClick(this);">
+      <label class="radio-labels" for="pie">Pie Graph</label><br>
+    </div>
+    {% for graph_legend, multi_graphs_values in multiple_graphs_dict.items() %}
+      <center>
+        <div class="control-group">
+          <div class="graph_padding">
+            <canvas id="{{ graph_legend }}"></canvas>
+          </div>
+        </div>
+      </center>
+      <script>
+
+      var prev_radio_value = 0;
+
+      function handleClick(myRadio) {
+        var static_bar_value = "Bar Graph"
+        var static_pie_value = "Pie Graph"
+
+        if (prev_radio_value != static_bar_value && myRadio.value == static_bar_value){
+          window.location.href = "{{url_for('multi_bars')}}"
+          prev_radio_value = myRadio.value
+        }
+        else if (prev_radio_value != static_pie_value && myRadio.value == static_pie_value){
+          window.location.href = "{{url_for('multi_pies')}}"
+          prev_radio_value = myRadio.value
+        }
+      }
+
+      var ctx = document.getElementById("{{ graph_legend }}").getContext('2d');
+      var graph_legend = "{{ graph_legend }}"
+
+      {% for key, value in max_dict.items() %}
+        if ("{{ key }}" == graph_legend){
+          var max_value = parseInt("{{ value }}");
+        }
+      {% endfor %}
+
+
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            {% for label in multi_graphs_values.keys() %}
+              "{{ label }}",
+            {% endfor %}
+          ],
+          datasets: [{
+            data: [
+              {% for value in multi_graphs_values.values() %}
+                "{{ value }}",
+              {% endfor %}
+            ],
+            backgroundColor: [
+              {% for value in multi_graphs_values.values() %}
+               getRandomCyanColour(),
+              {% endfor %}
+            ],
+            borderColor: [
+              {% for value in multi_graphs_values.values() %}
+               getRandomOrangeColour(),
+              {% endfor %}
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          animation: {
+            duration: 0,
+            onComplete: function() {
+              var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+
+              ctx.font = Chart.helpers.fontString(
+                                        Chart.defaults.defaultFontSize=14,
+                                        Chart.defaults.defaultFontStyle="bold",
+                                        Chart.defaults.global.defaultFontFamily
+                                      );
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'bottom';
+
+              this.data.datasets.forEach(function(dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function(bar, index) {
+                  var data = dataset.data[index];
+                  ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                });
+              });
+            }
+          },
+          hover: {
+            animationDuration: 0,
+          },
+          responsiveAnimationDuration: 0,
+          tooltips: {
+            enabled: false
+          },
+          legend: {
+            display: false
+          },
+          responsive: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#a64b00',
+                suggestedMax: max_value,
+                fontSize: 12
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: '#a64b00',
+                fontSize: 12,
+                autoSkip: false
+              }
+            }]
+          },
+          title: {
+            display: true,
+            text: "{{ graph_legend }}",
+            fontColor: "#a64b00",
+            fontSize: 20
+          }
+        }
+      });
+      </script>
+    {% endfor %}
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-logout" name="submit_button">
+    </div>
+    </div>
+  </form>
+</body>

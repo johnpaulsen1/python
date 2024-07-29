@@ -1,0 +1,96 @@
+.ldap_menu {
+  margin: 20px auto;
+  width: 600px;
+}
+.ldap_user_menu {
+  margin: 20px auto;
+  width: 750px;
+}
+.ldap_unix-group_menu {
+  margin: 20px auto;
+  width: 950px;
+}
+.ldap_group_menu {
+  margin: 20px auto;
+  width: 600px;
+}
+
+.user_is_locked {
+  color: #e8160f;
+}
+.user_is_not_locked {
+  color: #048500;
+}
+.user_lock_status_undetermined {
+  color: #ffaa00;
+}
+
+.btn-ldap-alt1 {
+  background: #19b8a0;
+  color: #2C4257;
+}
+.btn-ldap-alt1:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-ldap-alt2 {
+  background: #18ab95;
+  color: #eeeeee;
+}
+.btn-ldap-alt2:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-ldap-back {
+  background: #294662;
+  color: #ffffff;
+}
+.btn-ldap-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-ldap-logout {
+  background: #2C4257;
+  color: #ffffff;
+}
+.btn-ldap-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.floated_left_text-unix_group {
+  vertical-align: top;
+  display: inline-block;
+  float: left;
+}
+
+.floated_right_text-unix_group {
+  vertical-align: top;
+  display:inline-block;
+}
+
+.ldap-body {
+  background: url("/static/images/ldap2.png") center  #118973;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: Arial;
+  padding: 50px;
+}
+
+.ldap-menu-bg {
+  background-color: #e7e7e7;
+  border-style: solid;
+  border-color: #2C4257;
+}
+
+.ldap-app-title {
+  text-align: center;
+  color: #2C4257;
+}

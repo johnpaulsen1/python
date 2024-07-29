@@ -1,0 +1,79 @@
+  <!DOCTYPE html>
+  <link rel="stylesheet" href="/static/style.css" type="text/css" />
+  <link rel="stylesheet" href="/static/style/cmdb-style.css" type="text/css" />
+  <link rel="stylesheet" href="/static/style/table-fixed-header-style.css" type="text/css"/>
+  <title>TMC CMDB Current</title>
+  <form method="POST">
+    <div class="menu-screen-table">
+      <h2>{{ heading_value }}</h2>
+      <div class="cmdb-table-menu">
+        <div class="control-group-small">
+          <div class="tableFixHead">
+            <table class="centre">
+              <thead>
+                <tr>
+                   <th> Hostname </th>
+                   <th> Config Manager </th>
+                   <th> BU </th>
+                   <th> Cost_Centre </th>
+                   <th> Company_Code </th>
+                   <th> Server_Role </th>
+                   <th> Server_Type </th>
+                   <th> Arch </th>
+                   <th> OS Type </th>
+                   <th> OS Version </th>
+                   <th> IP Address </th>
+                   <th> Uptime </th>
+                   <th> Last Check in </th>
+                   <th> ClamAV </th>
+                   <th> ClamDB </th>
+                   <th> Clam Updated </th>
+                   <th> Splunk </th>
+                   <th> Tetration </th>
+                   <th> Flexera </th>
+                   <th> NetBackup </th>
+                   <th> CheckMK </th>
+                   <th> Sudo </th>
+                   <th> BES Agent </th>
+                   <th> CCS </th>
+                   <th> TMC </th>
+                   <th> Greatwall </th>
+                   <th> AD Auth </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for key, valuesList in selectResultsDict.items() %}
+                <tr>
+                  {% for value in valuesList %}
+                    <td>{{ value }}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="control-group-small">
+          <span style="text-decoration: underline;">
+            Total Records:
+          </span>
+          <span style="font-weight: bold; font-size: 20px;">
+            {{ total_records }}
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+        <input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+        <input type="submit" value="Download" class="floated_right_btn btn btn-dbq-download" name="submit_button">
+      </div>
+      <div class="control-group">
+        {% for message in get_flashed_messages() %}
+        <div class="flash">
+          <font color="red">{{ message }}</font>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </form>
+  </html>

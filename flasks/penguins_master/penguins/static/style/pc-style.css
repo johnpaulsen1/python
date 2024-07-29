@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, #03746e, #fff);
+  font-family: Arial;
+  font-size: 20px;
+  padding: 50px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #00a3a3;
+}
+
+.control-group {
+  margin-top: 20px;
+}
+
+.menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 40%;
+}
+
+.menu-screen-search {
+  position: absolute;
+  margin-left: 26em;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: auto;
+}
+
+.menu-screen-table {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: auto;
+}
+
+.patch-current-table {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  display: block;
+  margin: auto;
+  white-space: nowrap;
+}
+
+/* BUTTONS */
+
+.main-submit-buttons {
+  background: #028a8a;
+  color: #ffffff;
+  margin-top: 25px;
+  display: inline-block;
+  width: 30%;
+  padding: 1em;
+  font-weight: 500;
+}
+
+.btn_back {
+  background-color: rgb(0, 153, 153);
+  cursor: pointer;
+  display: inline-block;
+  width: 30%;
+  padding: 1em;
+  font-weight: 500;
+}
+
+.btn_logout {
+  background-color: rgb(0, 153, 153);
+  cursor: pointer;
+  display: inline-block;
+  width: 30%;
+  padding: 1em;
+  font-weight: 500;
+}
+
+/* Button Effects */
+
+.main-submit-buttons:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #e4530bd0;
+}
+
+.btn_back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #e4530bd0;
+}
+
+.btn_logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #e4530bd0;
+}
+
+/* INPUT BOXES */
+
+.input-text {
+  margin-top: 1em;
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 250px;
+  text-align: right;
+}
+
+.input-boxes {
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 1em;
+  float: left;
+}
+
+#nonprod-checkbox {
+  position: fixed;
+  top: 276px;
+  left: 820px;
+}
+
+#prod-checkbox {
+  position: fixed;
+  top: 320px;
+  left: 820px;
+}
+
+/* MISC */
+
+.info-submit {
+  margin-top: 3em;
+}

@@ -1,0 +1,87 @@
+/* unvisited link */
+a:link {
+  color: #424242;
+}
+/* visited link */
+a:visited {
+  color: #401a7e;
+}
+/* hover link */
+a:hover {
+  color: #1e1e1e;
+  cursor: pointer;
+}
+/* selected link */
+a:active {
+  color: #EC6A20;
+}
+
+.help_menu {
+  margin: 20px auto;
+  width: 670px;
+}
+
+.control-group-contents-help {
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.btn-help-back {
+  background: #505050;
+  color: #ffffff;
+}
+.btn-help-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-help-logout {
+  background: #3c3c3c;
+  color: #ffffff;
+}
+.btn-help-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.floated_left_text-help {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 30px;
+}
+.floated_right_text-help {
+  vertical-align: top;
+  display:inline-block;
+  margin-right: 10px;
+}
+
+.help-body {
+  background: url("/static/images/help1.png") center  #424242;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: Arial;
+  padding: 50px;
+}
+.help-menu-bg {
+  background-color: #e7e7e7;
+  border-style: solid;
+  border-color: #F9C09A;
+}
+.help-app-title {
+  text-align: center;
+  color: #EC6A20;
+}
+.help-sub-title {
+  color: #EC6A20;
+  clear: both;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+.help-list-elements {
+  color: #424242;
+  clear: both;
+  margin-top: 0px;
+  padding: 0px;
+}
