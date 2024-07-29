@@ -1,0 +1,12 @@
+---
+
+- hosts: "{{ hosts | default('all') }}"
+  user: "{{ user }}"
+  become: true
+  become_user: root
+  gather_facts: true
+  serial: 20
+
+  roles:
+    - { role: who, tags: [ 'who'] }
+    - { role: uptime, tags: [ 'uptime'] }

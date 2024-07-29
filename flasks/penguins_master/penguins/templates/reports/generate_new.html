@@ -1,0 +1,34 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/report-style.css" type="text/css">
+<title>Monthly reports</title>
+<form method="POST" enctype=multipart/form-data>
+  <body class="body">
+  <div class="menu">
+  <div class="menu-screen">
+  	<h2>Upload source documents</h2>
+    <p>You need to upload the FNB and RMB monitoring files.
+      The CMDB is already there.
+      The page will return the output file that is required.
+    </p> 
+
+  	<form action="/action_page.php">
+  		<label for="myfile">Select files:</label>
+  		<input type="file" name="file" accept="txt,csv" multiple> <br><br>
+		<input type="submit" value="Upload files" class="btn btn-upload" name="submit_button"><br>
+	</form>
+
+    <div class="control-group">
+    <input type="submit" value="Back" class="floated_left_btn btn btn-back" name="submit_button">
+    <input type="submit" value="Log Out" class="floated_right_btn btn btn-logout" name="submit_button">
+    </div>  
+  <div class="control-group">
+    {% for message in get_flashed_messages() %}
+    <div class="flash">
+      <font color="red">{{ message }}</font>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  </body>
+</form>

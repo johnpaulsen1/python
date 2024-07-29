@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css" type="text/css" />
+<title>I&SS Linux Monthly Reports</title>
+<form method="POST">
+  <body>
+    <div class="menu">
+      <div class="menu-screen">
+        <h1>Reports</h1>
+      <div class="menu-form">
+        <div class="control-group">
+          <div class="control-group-small">
+            <input
+              type="submit"
+              value="Availability"
+              class="btn btn-alt1"
+              name="submit_button"
+            />
+          </div>
+          <div class="control-group-small">
+            <input
+              type="submit"
+              value="View Current"
+              class="btn btn-alt1"
+              name="submit_button"
+            />
+          </div>
+          <div class="control-group-small">
+            <input
+              type="submit"
+              value="View Historic"
+              class="btn btn-alt1"
+              name="submit_button"
+            />
+          </div>
+        </div>
+        <div class="control-group">
+          <input
+            type="submit"
+            value="Back"
+            class="floated_left_btn btn btn-back"
+            name="submit_button"
+          />
+          <input
+            type="submit"
+            value="Log Out"
+            class="floated_right_btn btn btn-logout"
+            name="submit_button"
+          />
+        </div>
+        <div class="control-group">
+          {% for message in get_flashed_messages() %}
+          <div class="flash">
+            <font color="red">{{ message }}</font>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</form>

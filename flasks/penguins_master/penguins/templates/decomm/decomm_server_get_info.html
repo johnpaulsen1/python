@@ -1,0 +1,63 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/decomm-style.css" type="text/css">
+
+<head>
+  <title>Penguins - Decomm</title>
+  <script src="/static/javascript/the-datepicker.js"></script>
+</head>
+
+<body class="decomm-body">
+  <form method="POST">
+    <!-- <div class="decomm_menu"> -->
+    <div class="decomm-get-info-menu-screen">
+    <div class="decomm-app-title">
+      <h1>Get Decommission Info</h1>
+    </div>
+    <div class="menu-form">
+    <div class="control-group">
+      <div class="control-group-small">
+        <input type="text" class="decomm-request-text" value="" placeholder="Change Number" name="co_number">
+      </div>
+      <div class="control-group-small">
+        <input type="password" class="login-field decomm-request-text" value="" placeholder="IDM password" name="idm_password">
+      </div>
+      <div class="control-group-small-date">
+        <label class="decomm-request-text">
+          <b>Default</b> delete date, to be applied for <b>VMware</b> guests <b><u>ONLY</u></b>.
+        </label>
+      </div>
+      <div class="control-group-small">
+        <input type="text" class="decomm-request-text" value="{{ vmDeleteDate }}" name="vm_delete_date" id="vm_delete_date" placeholder="YYYY-MM-DD">
+      </div>
+
+      <script>
+        const input_vm_delete_date = document.getElementById('vm_delete_date');
+        input_vm_delete_date.value = {{vmDeleteDate|tojson}}
+        const datepicker_vm_delete_date = new TheDatepicker.Datepicker(input_vm_delete_date);
+        datepicker_vm_delete_date.render();
+      </script>
+
+      <div class="control-group-small-textarea">
+        <textarea class="decomm-text-area decomm-request-text" name="server_names" rows="10" cols="30" placeholder="Server Name/s"></textarea>
+      </div>
+      <div class="control-group-small-find-btn">
+        <input type="submit" value="Find Them!" class="btn btn-decomm-alt1" name="submit_button" onclick="store_vars();">
+      </div>
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-decomm-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-decomm-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    <!-- </div> -->
+  </form>
+</body>

@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.chart-container {
+  width: 1300px;
+  height: 1300px;
+}
+
+body {
+  background-image: linear-gradient(to right, #03746e, #fff);
+  font-family: Arial;
+  font-size: 20px;
+  /* padding: 50px; */
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #00a3a3;
+}
+
+.control-group {
+  margin-top: 20px;
+}
+
+.control-group-date {
+  margin-bottom: 30px;
+}
+
+.menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 40%;
+}
+.graph_menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 80%;
+}
+
+/* Buttons */
+.btn-back {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+.btn-logout {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+.btn-graphs-alt1 {
+  background: #06c6c6;
+  color: #f2f2f2;
+  text-shadow:
+    -1px -1px 0 #808080,
+    1px -1px 0 #808080,
+    -1px 1px 0 #808080,
+    1px 1px 0 #808080;
+  font-weight: bold;
+}
+.btn-graphs-alt1:hover {
+  background-color: #f75302;
+  color: #9cfcfc;
+  cursor: pointer;
+}
+.btn-graphs-alt2 {
+  background: #07dfdf;
+  color: #f2f2f2;
+  text-shadow:
+    -1px -1px 0 #808080,
+    1px -1px 0 #808080,
+    -1px 1px 0 #808080,
+    1px 1px 0 #808080;
+  font-weight: bold;
+}
+.btn-graphs-alt2:hover {
+  background-color: #fd7835;
+  color: #9cfcfc;
+  cursor: pointer;
+}
+
+.graph_padding {
+  padding-bottom: 40px;
+}
+
+.decomm-radio-buttons {
+  text-align: left;
+  margin-left: 150px;
+}
+
+.general-radio-buttons {
+  text-align: center;
+  margin-right: -1000px;
+}
+
+.radio-buttons-label {
+  text-align: center;
+  margin-right: -1125px;
+}
+
+.radio-labels {
+  margin-left: -100px;
+}

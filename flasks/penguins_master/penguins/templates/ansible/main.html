@@ -1,0 +1,66 @@
+	<!doctype html>
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
+	<link rel="stylesheet" href="/static/style/cmdb-style.css" type="text/css">
+	<link rel="stylesheet" href="/static/style/ansible-style.css" type="text/css">
+	<title>Ansible Master</title>
+	<body class="cmdb-body">
+	<form method="POST">
+		<div class="menu-screen">
+		<h2>WIP - Ansible - WIP</h2>
+		<div class="cmdb-menu-form">
+			<div class="control-group">
+			<div class="control-group-small">
+				<div id="ansible-user">
+					<p> Current user: {{ username }} </p>
+			</div>
+			</div>
+			</div>
+			<div class="control-group">
+				<label for="textarea" id="hostfield-textlabel">Inventory</label>
+				<textarea class="input" name="host_list" id="hostfield-textarea" rows="10" cols="50"></textarea>
+			</div>
+			<div class="control-group">
+			<div class="control-group-small">
+				<div id="playbook-list">
+					<form name="form1" id="form1" action="/action_page.php">
+					playbooks: <select name="playbook" id="playbook">
+							<option value="" selected="selected">Select playbook</option>
+						</select>
+						<br><br>
+					roles: <select name="roles" id="roles">
+							<option value="" selected="selected">Please select playbook</option>
+						</select>
+						<br><br>
+				</form>
+				</div>
+			</div>
+			</div>
+
+			<div class="passwords hidden">
+				<div class="control-group">
+					<div class="control-group-small">
+						<h4>Password: </h4>
+				<input type="password" name="upass" placeholder="normal password"><br><br>
+						<h4>Sudo Password: </h4>
+				<input type="password" name="spass" placeholder="sudo password">
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+			<div class="control-group-small">
+				<input type="submit" value="Submit" class="btn btn-dbq-alt2" name="submit_button">
+			</div>
+			</div>
+			<div class="control-group">
+			<input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+			<input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</form>
+	<script src="/static/javascript/ansible_form.js"></script>
+	</body>
+	</html>

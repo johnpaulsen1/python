@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/static/style/pc-style.css" />
+    <title>Automated admin - data sheet</title>
+  </head>
+  <form method="POST">
+      <div class="menu-screen-table">
+          <h2>Automated Admin - Patch Page Creation</h2>
+          <div class="data-capture">
+            <label for="patch_date" class="input-text"><b>Patch date:</b></label>
+            <input type="text" id="patch_date" name="patch_date" class="input-boxes" placeholder="2021-03-13"><br>
+            <label for="change-number" class="input-text"><b>Change Number:</b> </label>
+            <input type="text" id="change-number" name="CO" class="input-boxes" placeholder="CHG123456"><br>
+            <label for="branch" class="input-text"><b>Branch Name:</b> </label>
+            <input type="text" id="branch" name="branch" class="input-boxes" placeholder="FNUMBER_DESCRIPTION"><br>
+            <label for="nonprod-checkbox" class="input-text"><b>Nonprod</b></label><br>
+            <label for="prod-checkbox" class="input-text"><b>Prod</b></label><br>
+            <input type="checkbox" class="input-checkbox" name="nonprod-checkbox" id="nonprod-checkbox" value="nonprod" onclick="getRole()"><br>     
+            <input type="checkbox" class="input-checkbox" name="prod-checkbox" id="prod-checkbox" value="prod" onclick="getRole()"><br>
+          </div>
+          <div class="info-submit">
+            <input type="submit" class="main-submit-buttons" value="Submit" name="submit_button">
+          </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="btn_back" name="submit_button">
+        <input type="submit" value="Log Out" class="btn_logout" name="submit_button">
+      </div>
+    <script src="/static/javascript/git_form_script.js"></script>
+  </body>
+</html>

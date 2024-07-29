@@ -1,0 +1,73 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/cmdb-style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/table-fixed-header-style.css" type="text/css">
+<title>TMC CMDB Current</title>
+<body class="cmdb-body">
+  <form method="POST">
+    <div class="menu-screen-table">
+      <div class="cmdb-app-title">
+        <h1>TMC CMDB</h1>
+      </div>
+      <p>Date: <b>{{ date_today }}</b>:<br></p>
+      <p> Count of managed hosts for BU/s: <b>{{ buNames }}</b>:</p>
+      <p><b>{{ hostCount }}</b></p>
+      <div class="control-group">
+        <div class="tableFixHead">
+          <table class="center">
+            <thead>
+              <tr>
+                <th> Hostname </th>
+                <th> Config Manager </th>
+                <th> BU </th>
+                <th> Cost Centre </th>
+                <th> Company Code </th>
+                <th> Server Role </th>
+                <th> Server type </th>
+                <th> Architecure </th>
+                <th> OS </th>
+                <th> OS Version </th>
+                <th> IP Address </th>
+                <th> Uptime </th>
+                <th> Last Checkin </th>
+                <th> ClamAV </th>
+                <th> ClamDB </th>
+                <th> Clam update </th>
+                <th> Splunk </th>
+                <th> Tetration </th>
+                <th> Flexera </th>
+                <th> Netbackup </th>
+                <th> CheckMK </th>
+                <th> Sudo </th>
+                <th> BESAgent </th>
+                <th> CCS </th>
+                <th> TMC </th>
+                <th> Greatwall </th>
+                <th> AD auth </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              {% for key in tmcEntries.keys() %}
+                <tr>
+                  <td>{{ key }}</td>
+                  {% for values in tmcEntries[key] %}
+                  <td> {{ values }} </td>
+                  {% endfor %}
+                </tr>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          </div>
+        </div>
+        <div class="control-group">
+          <input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+          <input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+        </div>
+    </div>
+    </div>
+    </div>
+  </form>
+</body>

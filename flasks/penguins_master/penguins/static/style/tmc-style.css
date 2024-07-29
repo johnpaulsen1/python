@@ -1,0 +1,146 @@
+.btn-dbq-alt1 {
+  background: #019d59;
+  color: #ffffff;
+}
+.btn-dbq-alt1:hover {
+  background-color: #f75302;
+  cursor: pointer;
+}
+.btn-dbq-alt2 {
+  background: #019d59;
+  color: #ffffff;
+}
+.btn-dbq-alt2:hover {
+  background-color: #f75302;
+  cursor: pointer;
+}
+.btn-dbq-back {
+  background: #019d59;
+  color: #ffffff;
+}
+.btn-dbq-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-dbq-logout {
+  background: #019d59;
+  color: #ffffff;
+}
+.btn-dbq-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-dbq-download {
+  background: #019d59;
+  color: #ffffff;
+}
+.btn-dbq-download:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.tmc_floated_left_btn-results {
+   display: inline-block;
+   margin-right: 150px;
+}
+.floated_left_btn-results {
+   display: inline-block;
+   margin-right: 150px;
+}
+.floated_right_btn-results {
+   display:inline-block;
+   margin-left: 150px;
+}
+.floated_left_btn-query {
+   display: inline-block;
+   margin-right: 24px;
+}
+.floated_right_btn-query {
+   display:inline-block;
+   margin-left: 24px;
+}
+
+.floated_centre_btn-query {
+   display:inline-block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.results {
+  width: 400px;
+}
+
+.text_results-tmc {
+  background: #F0F0F0;
+  color:  #01c56f;
+}
+
+.tmc-menu-screen {
+  background-color: #FFF;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #01673a;
+}
+
+.tmc_menu {
+  margin: 20px auto;
+  width: 600px;
+}
+
+.tmc_table_menu {
+  margin: auto;
+  height: 500px;
+  /* width: auto; */
+  display: block;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+.tmc-menu-form {
+  text-align: center;
+}
+
+.tmc-body {
+  background: #029468;
+  font-family: Arial;
+  padding: 50px;
+  margin: 10px;
+}
+.tmc-menu-bg {
+  background-color: #e7e7e7;
+  border-style: solid;
+  border-color: #f3601c;
+  width: 600px;
+}
+
+.tmc_table_menu-bg {
+  background-color: #e7e7e7;
+  border-style: solid;
+  border-color: #f3601c;
+  width: auto;
+}
+
+.tmc-app-title {
+  text-align: center;
+  color: #01673a;
+}
+
+ /* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.textarea {
+  overflow: auto;
+}

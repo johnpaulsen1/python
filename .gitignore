@@ -1,0 +1,12 @@
+flasks/penguins_master/penguins/static/cmdb_*
+flasks/penguins_master/penguins/static/current_patch_results*
+flasks/penguins_master/penguins/static/result_export_*
+flasks/penguins_master/penguins/static/tmc_current-*
+flasks/penguins_master/penguins/static/tmc_result_export-*
+flasks/penguins_master/penguins/static/decomm_report_*
+flasks/penguins_master/penguins/static/data.json
+flasks/penguins_master/downloads/*.csv
+flasks/penguins_master/flask_session/*
+flasks/sockets/penguins.sock
+*__pycache__*
+*.pyc

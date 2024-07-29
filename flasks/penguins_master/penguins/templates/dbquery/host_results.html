@@ -1,0 +1,62 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/dbquery-style.css" type="text/css">
+<title>Penguins - DB Query Results</title>
+<body class="dbquery-body">
+  <form method="POST">
+    <div class="table_menu">
+    <div class="menu-screen dbquery-menu-bg">
+    <div class="dbquery-app-title">
+      <h2> Host information</h2>
+    </div>
+    <div class="control-group">
+    <form method="POST" class = {{ setVisibility }}>
+      {% for message in get_flashed_messages() %}
+      <div class="flash text_center">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </form>
+    <br>
+      <div class="menu-form">
+        <div class="control-group">
+        <div class=".control-group-contents text_results">
+          <div class="text_left text_results-dbquery">
+            <table id="results">
+              <thead>
+              <tr>
+              {% for heading in ListHeadings %}
+              <span style="font-weight: bold; vertical-align: top;">
+                 <th> {{ heading }} </th>
+               </span>
+              {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+               {% for item in h %}
+               <tr>
+                <td class="hostname"> {{ item.hostname  }} </td>
+                <td> {{ item.fnb_bu }} </td>
+                <td> {{ item.fnb_server_role }} </td>
+                <td> {{ item.virtual }} </td>
+                <td> {{ item.lsbdistrelease }} </td>
+                <td> {{ item.operatingsystem }} </td>
+                <td> {{ item.fnb_company_code }} </td>
+                <td> {{ item.fnb_cost_centre }} </td>
+               </tr>
+               {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="floated_left_btn-results btn btn-dbq-back" name="submit_button">
+        <input type="submit" value="Log Out" class="floated_right_btn-results btn btn-dbq-logout" name="submit_button">
+      </div>
+      </div>
+    </div>
+    </div>
+  </form>
+</body>

@@ -1,0 +1,73 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/vsphere-style.css" type="text/css">
+<title>Penguins - vsphere Status</title>
+<body class="vsphere-body">
+  <form method="POST">
+    <div class="vsphere_menu">
+    <div class="menu-screen vsphere-menu-bg">
+    <div class="vsphere-app-title">
+      <h1>Search VM's Results</h1>
+    </div>
+    <div class="menu-form">
+    <div class="control-group">
+      <div class = "{{ setVMFoundVisibility }} text_results">
+        <span style="text-decoration: underline; font-weight: bold;">
+          <h3 class="text_results">Found the below VM/s:</h3>
+        </span>
+        {% for vmLists in listVMsList %}
+        <div class="control-group-small">
+          <div class=".control-group-contents">
+            <div class="text_left floated_left_text">
+              <span style="font-weight: bold; vertical-align: top;">
+                <ul class="nobull">
+                  {% for item in listVMStatics %}
+                    <li> {{ item }} </li>
+                  {% endfor %}
+                </ul>
+              </span>
+            </div>
+            {% for vmList in vmLists %}
+            <div class="text_left floated_right_text">
+              <ul class="nobull">
+                {% for item in vmList %}
+                  <li> {{ item }} </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class = "{{ setCantFindVMsVisibility }} control-group-contents text_results_fail">
+        <span style="text-decoration: underline; font-weight: bold;">
+          <h3 class="text_results_fail">Unable to find the below VM/s:</h3>
+        </span>
+        <!-- <div class="control-group-small"> -->
+          {% for cantFindVM in cantFindVMsList %}
+            <ul class="nobull">
+              <li> {{ cantFindVM }} </li>
+            </ul>
+          {% endfor %}
+        <!-- </div> -->
+      </div>
+
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-vsphere-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-vsphere-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    </div>
+  </form>
+</body>

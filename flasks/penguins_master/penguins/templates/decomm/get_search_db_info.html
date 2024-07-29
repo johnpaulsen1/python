@@ -1,0 +1,86 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css"/>
+<link rel="stylesheet" href="/static/style/decomm-style.css" type="text/css"/>
+<link rel="stylesheet" href="/static/style/main-menu-style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/the-datepicker.css" type="text/css"/>
+
+<head>
+  <title>Penguins - Decomm DB Search</title>
+  <script src="/static/javascript/decomm_drop_down_selection.js"></script>
+  <script src="/static/javascript/the-datepicker.js"></script>
+</head>
+
+<body class="decomm-body">
+  <form method="POST">
+    <!-- <div class="decomm_menu"> -->
+    <div class="menu-screen">
+    <div class="decomm-app-title">
+      <h1>Query Decommission DB</h1>
+    </div>
+
+    <div class="menu-form">
+    <div class="control-group">
+      <div class="control-group-date">
+        <label> Search by: </label>
+        <select id="decomm_search_by" name="decomm_search_by" onchange="JavaScript:updatePlaceHolder()">
+          <option value = "Hostname">Hostname</option>
+          <option value = "Change Order">Change Order</option>
+          <option value = "Actioned By">Actioned By</option>
+          <option value = "Date">Date</option>
+        </select>
+      </div>
+
+      <div class="control-group-small" id="text_area" name="text_area">
+        <textarea class="decomm-text-area decomm-db-request-text" name="decomm_search_field" rows="10" cols="30" placeholder="Decomm Hostname/s"></textarea>
+      </div>
+
+      <div class="control-group-small visibility_off" id="date_field" name="date_field">
+
+        <div class="control-group-date decomm-db-request-text">
+          <span style="font-weight: bold; text-decoration: underline;">FROM</span>
+          <span style="font-weight: bold;"> Date:</span>
+          <div>
+            <input class="decomm-db-date-text" type="text" id="from_date" name="decomm_from_date" placeholder="click here to select date"/>
+          </div>
+        </div>
+
+        <div class="control-group-date decomm-db-request-text">
+          <span style="font-weight: bold; text-decoration: underline;">TO</span>
+          <span style="font-weight: bold;"> Date:</span>
+          <div>
+            <input class="decomm-db-date-text" type="text" id="to_date" name="decomm_to_date" placeholder="click here to select date"/>
+          </div>
+        </div>
+
+        <script>
+          const input_from_date = document.getElementById('from_date');
+          const datepicker_from_date = new TheDatepicker.Datepicker(input_from_date);
+          datepicker_from_date.render();
+
+          const input_to_date = document.getElementById('to_date');
+          const datepicker_to_date = new TheDatepicker.Datepicker(input_to_date);
+          datepicker_to_date.render();
+        </script>
+
+      </div>
+
+      <div class="control-group-small">
+        <input type="submit" value="Search!" class="btn btn-decomm-db-alt1" name="submit_button">
+      </div>
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-decomm-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-decomm-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    <!-- </div> -->
+  </form>
+</body>

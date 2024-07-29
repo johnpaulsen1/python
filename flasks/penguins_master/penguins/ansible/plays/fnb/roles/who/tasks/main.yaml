@@ -1,0 +1,10 @@
+---
+- name: who
+  shell: who
+  register: who_out
+
+- debug:
+    msg: "{{ ansible_hostname }}"
+
+- debug:
+    var: who_out.stdout_lines

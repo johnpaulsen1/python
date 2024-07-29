@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="stylesheet" href="/static/style/pc-style.css" type="text/css">
+    <link rel="stylesheet" href="/static/style/table-fixed-header-style.css" type="text/css">
+    <title>Current Patch results</title>
+  </head>
+  <form method="POST">
+      <div class="patch-current-table">
+          <h2>Current Patch Results</h2> 
+            <div class="tableFixHead">
+              <table class="center">
+                <thead>
+              <tr>
+                <th> Hostname </th>
+                <th> virt_type </th>
+                <th> capsule </th>
+                <th> errata_status </th>
+                <th> subscription_status </th>
+                <th> virtual_host </th>
+                <th> kernel version </th>
+                <th> os family </th>
+                <th> os release </th>
+                <th> uptime_days </th>
+              </tr>
+              </thead>
+            </div>
+              <tr>
+             {% for key in patchDBEntries.keys() %}
+             <tr>
+                      <td>{{ key }}</td>
+                  {% for values in patchDBEntries[key] %}
+                    <td> {{ values }} </td>
+                  {% endfor %}
+                  </tr>
+              </tr>
+              {% endfor %}
+             </table>
+      </div>          
+          <div class="info-submit">
+            <input type="submit" class="main-submit-buttons" value="Download" name="submit_button">
+          </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="btn_back" name="submit_button">
+        <input type="submit" value="Log Out" class="btn_logout" name="submit_button">
+      </div>
+    <script src="/static/javascript/git_form_script.js"></script>
+  </body>
+</html>
