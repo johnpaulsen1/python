@@ -1,0 +1,37 @@
+[
+    {
+      "op": "replace",
+      "path": "/firmware/reapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/connectionSettings/reapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/serverHardwareReapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/localStorage/reapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/sanStorage/reapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/bios/reapplyState",
+      "value": "ApplyPending"
+    },
+    {
+      "op": "replace",
+      "path": "/managementProcessor/reapplyState",
+      "value": "ApplyPending"
+    }
+]
