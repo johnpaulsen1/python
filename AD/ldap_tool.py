@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import ldap, getpass, sys, io, ast
 from contextlib import redirect_stdout
-from termcolor import colored, cprint
+from termcolor import cprint
 
 # variable declaration:
-ldapServer = "ldap://<ldap sevrer>"
-ldapBase = "<ldap base domain>"
-userDomain = "@<domain>"
-scriptVers = "2.1.0"
+ldapServer = "ldap://<ldap server>/"
+ldapBase = "OU=TMNL,DC=tm,DC=nl,DC=ad,DC=tmo"
+userDomain = "TMNL"
+scriptVers = "0.1.0"
 sailPointSite = "https://not-today.com"
 
 # initialize the con variable (connection to ldap server)
@@ -23,9 +23,9 @@ def authenticate():
 	print(f"You need to authenticate on the {userDomain} domain before we proceed...")
 	while True:
 		try:
-			print(colored('Please input AD username:', 'cyan'))
+			cprint('Please input AD username:', 'cyan')
 			user = input()
-			print(colored(f"Please input password for AD user: '{user}':", 'cyan'))
+			cprint(f"Please input password for AD user: '{user}':", 'cyan')
 			password = getpass.getpass()
 
 			# set ldap protocol version & options
@@ -37,7 +37,7 @@ def authenticate():
 			break;
 
 		except ldap.LDAPError as e:
-			print(colored(f"failed to connect to ldap server: '{ldapServer}'", 'red'))
+			cprint(f"failed to connect to ldap server: '{ldapServer}'", 'red')
 			# the below will read the output (stdout) of the exception that was caught
 			# from line: print(e)
 			# and will store it in a variable
@@ -54,44 +54,44 @@ def authenticate():
 					dataCodeList = item.split(" ")
 					dataCode = dataCodeList[1]
 			if dataCode == "775":
-				print(colored(f"user: '{user}' ldap account is locked...", 'red'))
-				print(colored("visit the below site to unlock it.", 'red'))
+				cprint(f"user: '{user}' ldap account is locked...", 'red')
+				cprint("visit the below site to unlock it.", 'red')
 				print(f"https://{sailPointSite}")
 			elif dataCode == "52e":
-				print(colored("username / password mismatch...", 'red'))
+				cprint("username / password mismatch...", 'red')
 			con.unbind()
 			sys.exit()
 
 		except ldap.INVALID_CREDENTIALS:
-			print(colored(f"User: '{user}' credentials are invalid...", 'red'))
+			cprint(f"User: '{user}' credentials are invalid...", 'red')
 			con.unbind()
 
 		except ldap.NO_SUCH_OBJECT as e:
-			print(colored(f"Can't find user: '{user}'", 'red'))
+			cprint(f"Can't find user: '{user}'", 'red')
 			print(e)
 			con.unbind()
 
 		except ldap.SERVER_DOWN:
-			print(colored(f"AD server: '{ldapServer}' not available.", 'red'))
+			cprint(f"AD server: '{ldapServer}' not available.", 'red')
 			con.unbind()
 
 		except Exception as e:
-			print(colored("Exception caught:", 'red'))
-			print(colored(e, 'red'))
+			cprint("Exception caught:", 'red')
+			cprint(e, 'red')
 			con.unbind()
 			sys.exit()
 
 		except KeyboardInterrupt as ki:
 			print()
-			print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-			print(colored("Quiting LDAP tool", 'grey'))
+			cprint("User initiated a Keyboard Interrupt...", 'grey')
+			cprint("Quiting LDAP tool", 'grey')
 			# con.unbind()
 			sys.exit()
 
 		except EOFError as ee:
 			print()
-			print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-			print(colored("Quiting LDAP tool", 'grey'))
+			cprint("User initiated a Keyboard Interrupt...", 'grey')
+			cprint("Quiting LDAP tool", 'grey')
 			# con.unbind()
 			sys.exit()
 
@@ -100,21 +100,21 @@ def selectMethod():
 	while True:
 		try:
 			print()
-			print(colored("Please select an option:", 'magenta'))
-			print(colored("1. Get AD INFO for a specific user", 'magenta'))
-			print(colored("2. Get list of Groups that a user is in", 'magenta'))
-			print(colored("3. Get list of members for a specific Group", 'magenta'))
-			print(colored("4. exit", 'magenta'))
-			print(colored("enter in the no. only of the option:\n", 'magenta'))
+			cprint("Please select an option:", 'magenta')
+			cprint("1. Get AD INFO for a specific user", 'magenta')
+			cprint("2. Get list of Groups that a user is in", 'magenta')
+			cprint("3. Get list of members for a specific Group", 'magenta')
+			cprint("4. exit", 'magenta')
+			cprint("enter in the no. only of the option:\n", 'magenta')
 			userSelect = int(input())
 
 			if userSelect == 1:
 				while True:
 					print()
-					print(colored('please input username to search:', 'yellow'))
+					cprint('please input username to search:', 'yellow')
 					uid = input()
 					if " " in uid and "," not in uid:
-						print(colored('usage: lastname, firstname', 'red'))
+						cprint('usage: lastname, firstname', 'red')
 					elif " " in uid and "," in uid:
 						# set search query based on user input
 						query = f"(cn={uid})"
@@ -131,10 +131,10 @@ def selectMethod():
 			elif userSelect == 2:
 				while True:
 					print()
-					print(colored('please input username to search:', 'yellow'))
+					cprint('please input username to search:', 'yellow')
 					uid = input()
 					if " " in uid and "," not in uid:
-						print(colored('usage: lastname, firstname', 'red'))
+						cprint('usage: lastname, firstname', 'red')
 					elif "," in uid or " " in uid:
 						# set search query based on user input
 						query = f'(cn={uid})'
@@ -150,36 +150,36 @@ def selectMethod():
 
 			elif userSelect == 3:
 				print()
-				print(colored('please input group name to search: ', 'yellow'))
+				cprint('please input group name to search: ', 'yellow')
 				gid = input()
 				ldapSearchGroupMembership(user, gid)
 
 			elif userSelect == 4:
 				print()
-				print(colored("thanks for coming...", 'grey'))
-				print(colored("goodbye...", 'grey'))
+				cprint("thanks for coming...", 'grey')
+				cprint("goodbye...", 'grey')
 				con.unbind()
 				sys.exit()
 
 			else:
 				print()
-				print(colored("Invalid option, please try again...", 'red'))
+				cprint("Invalid option, please try again...", 'red')
 
 		except ValueError as ve:
-			print(colored("You did NOT enter in a valid number value...", 'red'))
-			print(colored("please try again...", 'red'))
+			cprint("You did NOT enter in a valid number value...", 'red')
+			cprint("please try again...", 'red')
 
 		except KeyboardInterrupt as ki:
 			print()
-			print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-			print(colored("Quiting LDAP tool", 'grey'))
+			cprint("User initiated a Keyboard Interrupt...", 'grey')
+			cprint("Quiting LDAP tool", 'grey')
 			con.unbind()
 			sys.exit()
 
 		except EOFError as ee:
 			print()
-			print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-			print(colored("Quiting LDAP tool", 'grey'))
+			cprint("User initiated a Keyboard Interrupt...", 'grey')
+			cprint("Quiting LDAP tool", 'grey')
 			con.unbind()
 			sys.exit()
 
@@ -248,36 +248,36 @@ def ldapSearchUser(uid, query):
 				userTelNumber = ""
 
 			cprint('See AD info below for user: ' + userEmpID, 'blue', attrs=['bold'])
-			print(colored('Full Name:{0:12} {1}'.format('',userFullName),'blue'))
-			print(colored('Employee No:{0:10} {1}'.format('',userEmpID),'blue'))
-			print(colored('Job Title:{0:12} {1}'.format('',userJobTitle),'blue'))
-			print(colored('Join Date:{0:12} {1}/{2}/{3}'.format('',userJoinYear,
-			userJoinMonth, userJoinDay),'blue'))
-			print(colored('Business Unit:{0:8} {1}'.format('',userCompCode),'blue'))
-			print(colored('Manager:{0:14} {1}'.format('',userManager),'blue'))
-			print(colored('Email Address:{0:8} {1}'.format('',userEmail),'blue'))
-			print(colored('Contact Number:{0:7} {1}'.format('',userTelNumber),'blue'))
+			cprint('Full Name:{0:12} {1}'.format('',userFullName),'blue')
+			cprint('Employee No:{0:10} {1}'.format('',userEmpID),'blue')
+			cprint('Job Title:{0:12} {1}'.format('',userJobTitle),'blue')
+			cprint('Join Date:{0:12} {1}/{2}/{3}'.format('',userJoinYear,
+				userJoinMonth, userJoinDay),'blue')
+			cprint('Business Unit:{0:8} {1}'.format('',userCompCode),'blue')
+			cprint('Manager:{0:14} {1}'.format('',userManager),'blue')
+			cprint('Email Address:{0:8} {1}'.format('',userEmail),'blue')
+			cprint('Contact Number:{0:7} {1}'.format('',userTelNumber),'blue')
 			print()
 			print()
 
 	except ldap.LDAPError as e:
-		print(colored(f"failed to connect to ldap server: '{ldapServer}'", 'red'))
+		cprint(f"failed to connect to ldap server: '{ldapServer}'", 'red')
 
 	except ldap.NO_SUCH_OBJECT as e:
-		print(colored(f"can't find user: '{uid}'", 'red'))
+		cprint(f"can't find user: '{uid}'", 'red')
 		print(e)
 
 	except ldap.SERVER_DOWN:
-		print(colored(f"AD server: '{ldapServer}' not available", 'red'))
+		cprint(f"AD server: '{ldapServer}' not available", 'red')
 
 	except Exception as e:
-		print(colored("Exception caught:", 'red'))
-		print(colored(e, 'red'))
+		cprint("Exception caught:", 'red')
+		cprint(e, 'red')
 		sys.exit()
 
 	except KeyboardInterrupt as ki:
-		print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-		print(colored("Quiting LDAP tool", 'grey'))
+		cprint("User initiated a Keyboard Interrupt...", 'grey')
+		cprint("Quiting LDAP tool", 'grey')
 		sys.exit()
 
 # method for searching and returning the AD groups a user belongs to
@@ -305,28 +305,28 @@ def ldapSearchGroups(uid, query):
 		if len(groupNameList) > 0:
 			cprint(f"user: '{uid}' exists in the below groups:", 'blue', attrs=['bold'])
 			for item in groupNameList:
-				print(colored(item, 'blue'))
+				cprint(item, 'blue')
 		else:
-			print(colored(f"user: '{uid}' does not belong to any groups", 'yellow'))
+			cprint(f"user: '{uid}' does not belong to any groups", 'yellow')
 
 	except ldap.LDAPError as e:
-		print(colored(f"failed to connect to ldap server: '{ldapServer}'", 'red'))
+		cprint(f"failed to connect to ldap server: '{ldapServer}'", 'red')
 
 	except ldap.NO_SUCH_OBJECT as e:
-		print(colored(f"can't find user: '{uid}'", 'red'))
+		cprint(f"can't find user: '{uid}'", 'red')
 		print(e)
 
 	except ldap.SERVER_DOWN:
-		print(colored(f"AD server: '{ldapServer}' not available", 'red'))
+		cprint(f"AD server: '{ldapServer}' not available", 'red')
 
 	except Exception as e:
-		print(colored("Exception caught:", 'red'))
-		print(colored(e, 'red'))
+		cprint("Exception caught:", 'red')
+		cprint(e, 'red')
 		sys.exit()
 
 	except KeyboardInterrupt as ki:
-		print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-		print(colored("Quiting LDAP tool", 'grey'))
+		cprint("User initiated a Keyboard Interrupt...", 'grey')
+		cprint("Quiting LDAP tool", 'grey')
 		sys.exit()
 
 # method for checking whose members of a certain group
@@ -374,27 +374,27 @@ def ldapSearchGroupMembership(user, gid):
 			membersHash[user]=userSameAcc
 
 		for key, value in membersHash.items():
-			print(colored(f'{key} -> {value}','blue'))
+			cprint(f'{key} -> {value}','blue')
 
 
 	except ldap.LDAPError as e:
-		print(colored(f"failed to connect to ldap server: '{ldapServer}'", 'red'))
+		cprint(f"failed to connect to ldap server: '{ldapServer}'", 'red')
 
 	except ldap.NO_SUCH_OBJECT as e:
-		print(colored(f"can't find user: '{member}'", 'red'))
+		cprint(f"can't find user: '{member}'", 'red')
 		print(e)
 
 	except ldap.SERVER_DOWN:
-		print(colored(f"AD server: '{ldapServer}' not available", 'red'))
+		cprint(f"AD server: '{ldapServer}' not available", 'red')
 
 	except Exception as e:
-		print(colored("Exception caught:", 'red'))
-		print(colored(e, 'red'))
+		cprint("Exception caught:", 'red')
+		cprint(e, 'red')
 		sys.exit()
 
 	except KeyboardInterrupt as ki:
-		print(colored("User initiated a Keyboard Interrupt...", 'grey'))
-		print(colored("Quiting LDAP tool", 'grey'))
+		cprint("User initiated a Keyboard Interrupt...", 'grey')
+		cprint("Quiting LDAP tool", 'grey')
 		sys.exit()
 
 # calling required methods
