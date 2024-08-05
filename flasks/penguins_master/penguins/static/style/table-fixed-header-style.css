@@ -1,0 +1,37 @@
+.tableFixHead {
+  overflow-y: auto;
+  height: 500px;
+}
+.tableFixHeadDecomms {
+  overflow-y: auto;
+  height: 300px;
+  width: 100%;
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+table {
+  border-collapse: collapse;
+  border: solid 1px rgb(230, 162, 17);
+  width: 100%;
+}
+th,
+td {
+  padding: 5px 5px;
+  border: solid 1px rgb(230, 162, 17);
+}
+th {
+  color: #00a3a3;
+  background: #ffffff;
+}
+td {
+  background: #f0f0f0;
+}
+.tableFixHead,
+.tableFixHead td {
+  box-shadow: inset 1px -1px #fd784f;
+}
+.tableFixHead th {
+  box-shadow: inset 1px 1px #fd784f, 0 1px #fd784f;
+}

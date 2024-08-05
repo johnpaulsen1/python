@@ -1,0 +1,126 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/cmdb-style.css" type="text/css">
+<head>
+  <title>TMC CMDB Search</title>
+  <script src="/static/javascript/cmdb_drop_down_selection.js"></script>
+</head>
+<body class="cmdb-body">
+  <form method="POST">
+    <div class="cmdb_menu">
+      <div class="menu-screen">
+        <div class="cmdb-app-title">
+          <h2>Linux TMC CMDB Search</h2>
+        </div>
+        <div>
+            <form class="search-box">
+              <div class="control-group">
+                <label>Select category: </label><br>
+                <select id="cmdb_search_by" name="cmdb_search_by" onchange="JavaScript:updatePlaceHolder()">
+                  {% for item in dd_menu %}
+                    <option value = {{ item }} >{{ item }}</option>
+                  {% endfor %}
+                  </select>
+              </div>
+
+                <div class="control-group-small" id="text_area" name="text_area">
+                  <textarea class="cmdb-text-area cmdb-db-request-text" name="cmdb_search_field" id="cmdb_search_field" rows="10" cols="30" placeholder="CMDB host_name/s"></textarea>
+                </div>
+
+                <div class="control-group-small visibility_off" id="bu_drop_down" name="bu_drop_down">
+                  <label>Select BU: </label><br>
+                  <select id="bu_name_selection", name="bu_name_selection">
+                    {% for item in bu_names %}
+                      <option value = "{{ item }}" >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="cost_centre_drop_down" name="cost_centre_drop_down">
+                  <label>Select Cost Centre: </label><br>
+                  <select id="cost_centre_selection", name="cost_centre_selection">
+                    {% for item in cost_centres %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="company_code_drop_down" name="company_code_drop_down">
+                  <label>Select Company Code: </label><br>
+                  <select id="company_code_selection", name="company_code_selection">
+                    {% for item in company_codes %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="role_drop_down" name="role_drop_down">
+                  <label>Select Role: </label><br>
+                  <select id="role_selection", name="role_selection">
+                    {% for item in role_names %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="host_type_drop_down" name="host_type_drop_down">
+                  <label>Select Host Type: </label><br>
+                  <select id="host_type_selection", name="host_type_selection">
+                    {% for item in host_type_names %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="architecture_drop_down" name="architecture_drop_down">
+                  <label>Select Architecure: </label><br>
+                  <select id="architecture_selection", name="architecture_selection">
+                    {% for item in architecture_names %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="osfamily_drop_down" name="osfamily_drop_down">
+                  <label>Select OS Family: </label><br>
+                  <select id="osfamily_selection", name="osfamily_selection">
+                    {% for item in os_family_names %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="osversion_drop_down" name="osversion_drop_down">
+                  <label>Select OS Version: </label><br>
+                  <select id="osversion_selection", name="osversion_selection">
+                    {% for item in os_versions %}
+                      <option value = {{ item }} >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group-small visibility_off" id="managed_drop_down" name="managed_drop_down">
+                  <label>Select Config Manager: </label><br>
+                  <select id="managed_selection", name="managed_selection">
+                    {% for item in managed_names %}
+                      <option value = "{{ item }}" >{{ item }}</option>
+                    {% endfor %}
+                    </select><br>
+                </div>
+
+                <div class="control-group">
+                  <input type="submit" value="Search" class="floated_left_btn btn btn-search" name="submit_button">
+                </div>
+
+              </form>
+        </div>
+     <div class="control-group">
+        <input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+        <input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+</body>

@@ -1,0 +1,24 @@
+os packages:
+uwsgi
+openldap-devel
+python-devel
+openssl-devel
+python3-venv
+
+pip3 modules:
+python-ldap
+cryptography
+uwsgi
+wheel
+pypuppetdb
+flask-login
+paramiko
+bcrypt
+pynacl
+Flask-SocketIO
+python-socketio
+Pypubsub
+psycopg2-binary
+pyVmomi
+PyChefRevival
+PyChef

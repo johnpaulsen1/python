@@ -1,0 +1,31 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/live-messages-style.css" type="text/css">
+<title>Penguins - Live Server Messages</title>
+<body class="live-messages-body">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/static/javascript/socketio.js"></script>
+  <form method="POST">
+    <div class="live-messages_menu">
+      <div class="menu-screen live-messages-menu-bg">
+        <div class="live-messages-app-title">
+          <h1>Live Flasky Server Messages</h1>
+        </div>
+        <div class="live-messages-form">
+          <div class="control-group">
+            <input type="submit" value="Back" class="floated_left_btn btn btn-live-messages-back" name="submit_button">
+            <input type="submit" value="Log Out" class="floated_right_btn btn btn-live-messages-logout" name="submit_button">
+          </div>
+          <div class="control-group">
+            <div name="live_message" id="live_message"></div>
+          </div>
+          <div class="control-group">
+            <input type="submit" value="Back" class="floated_left_btn btn btn-live-messages-back" name="submit_button">
+            <input type="submit" value="Log Out" class="floated_right_btn btn btn-live-messages-logout" name="submit_button">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>

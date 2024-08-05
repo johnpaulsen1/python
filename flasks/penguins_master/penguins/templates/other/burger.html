@@ -1,0 +1,27 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<title>Penguins - Other</title>
+<form method="POST">
+  <div class="menu">
+  <div class="menu-screen">
+  <div class="app-title">
+    <h1>Burger</h1>
+  </div>
+  <div class="menu-form">
+    <div class="control-group">
+    	<img src="/static/images/burger1.png" width="55%" height="55%">
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  </div>

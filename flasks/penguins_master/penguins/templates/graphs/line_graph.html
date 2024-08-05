@@ -1,0 +1,169 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/graphs-style.css" type="text/css">
+<head>
+  <title>{{ title }}</title>
+  <script src="/static/javascript/colour_randomiser.js"></script>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js" integrity="sha512-vJLAMsHIpI7ORUMpudTJNz+wRNnPQAkHVlnpgpVxXI0lPnKcQ38Psu0APJ2r3nhhBHNIcQPRVrlkHiAeQHADTA==" crossorigin="anonymous"></script>
+
+<body>
+  <form method="POST">
+    <div class="graph_menu-screen">
+    <center>
+      <h2>{{ title }}</h2>
+    </center>
+    <center>
+      <div class="control-group">
+        <canvas id="chart"></canvas>
+      </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="floated_left_btn btn btn-back" name="submit_button">
+        <input type="submit" value="Log Out" class="floated_right_btn btn btn-logout" name="submit_button">
+      </div>
+    </center>
+    <script>
+    var canvasChart = document.getElementById('chart');
+    var ctx = canvasChart.getContext('2d');
+    var max_value = {{ max }}
+    var num_steps = {{ steps }}
+
+    Chart.defaults.line.spanGaps = true;
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [
+          {% for label in labels %}
+           "{{ label }}",
+          {% endfor %}
+        ],
+        datasets: [{
+          data: [
+            {% for value in values %}
+             "{{ value }}",
+            {% endfor %}
+          ],
+          backgroundColor: getRandomLightCyanColour(),
+          borderColor: getRandomCyanColour(),
+          lineTension: 0,
+          borderWidth: 2,
+          pointRadius: 6,
+          pointBorderWidth: 1.5,
+          showLine: true,
+          pointBackgroundColor: [
+            {% for value in values %}
+             getRandomCyanColour(),
+            {% endfor %}
+          ],
+          pointBorderColor: [
+            {% for value in values %}
+             getRandomOrangeColour(),
+            {% endfor %}
+          ],
+          pointStyle: 'rectRot',
+        }]
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+        animation: {
+          easing: "easeOutBounce",
+          duration: 1,
+          onComplete: function() {
+            var chartInstance = this.chart, ctx = chartInstance.ctx;
+
+            ctx.fillStyle = '#a64b00';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+
+            ctx.font = Chart.helpers.fontString(
+                                      Chart.defaults.defaultFontSize=14,
+                                      Chart.defaults.defaultFontStyle="bold",
+                                      Chart.defaults.global.defaultFontFamily
+                                    );
+
+            this.data.datasets.forEach(function(dataset, i) {
+              var meta = chartInstance.controller.getDatasetMeta(i);
+              meta.data.forEach(function(points, index) {
+                var data = dataset.data[index];
+                ctx.fillText(data, points._model.x, points._model.y - 5);
+              });
+            });
+          }
+        },
+        tooltips: {
+          enabled: true,
+          intersect: true,
+          backgroundColor: "rgba(0,0,0,0.8)",
+          titleFontSize: 14,
+          titleFontStyle: "bold",
+          titleFontColor: '#00a3a3',
+          yPadding: 16,
+          cornerRadius: 2,
+          borderColor: getRandomOrangeColour(),
+          borderWidth: 1,
+        },
+        responsive: true,
+        scales: {
+          xAxes: [{
+            ticks: {
+              fontColor: '#a64b00',
+              major: {
+                enabled: true,
+              },
+              padding: 0,
+              color: '#a64b00',
+              autoSkip: false,
+            },
+            title: {
+              display: true,
+              text: 'User Names',
+            },
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              fontColor: '#a64b00',
+            },
+          }],
+        },
+      },
+    });
+
+    canvasChart.onclick = function(e) {
+      var activePoints = myChart.getElementsAtEventForMode(e, 'point', myChart.options);
+      if (! activePoints.length) return;
+      var setURL = "{{ url_for('set_graph_results_decomm_db') }}";
+      var displayURL = "{{ url_for('display_search_info_decomm_db') }}";
+      var displayAllURL = "{{ url_for('decomm_show_all_decomm_db') }}";
+      var firstPoint = activePoints[0];
+      var point = myChart.data.labels[firstPoint._index];
+
+      if (point != 'Total' && typeof point !== 'undefined' ){
+        $.ajax({
+          type: "POST",
+          url: setURL,
+          contentType: "application/json",
+          data: JSON.stringify({search_for: point}),
+          dataType: "json",
+          success: function(response) {
+            console.log(response);
+            window.open(displayURL);
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+      }
+      else if (point == 'Total' && typeof point !== 'undefined'){
+        window.open(displayAllURL);
+      }
+    }
+
+    </script>
+    </div>
+  </form>
+</body>

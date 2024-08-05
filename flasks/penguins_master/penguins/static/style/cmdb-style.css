@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, #03746e, #fff);
+  font-family: Arial;
+  font-size: 20px;
+  padding: 50px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #00a3a3;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #00a3a3;
+}
+
+.control-group {
+  margin-top: 20px;
+}
+
+.menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 40%;
+}
+
+.menu-screen-search {
+  position: absolute;
+  margin-left: 26em;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: auto;
+}
+
+.menu-screen-table {
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: auto;
+}
+
+.cmdb-table-menu {
+  margin: auto;
+  height: auto;
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.cmdb-text-area {
+  background-color: #fff2f2;
+}
+
+.cmdb-db-request-text {
+  color: #000;
+}
+
+/* Buttons */
+.btn-dbq-back {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-dbq-back:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+.btn-dbq-logout {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-dbq-logout:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+.btn-dbq-download {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-dbq-download:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+.btn-dbq-alt1 {
+  background: #06bebe;
+  color: #ffffff;
+}
+.btn-dbq-alt1:hover {
+  background-color: #f75302;
+  cursor: pointer;
+}
+.btn-dbq-alt2 {
+  background: #06bebe;
+  color: #ffffff;
+}
+.btn-dbq-alt2:hover {
+  background-color: #f75302;
+  cursor: pointer;
+}
+
+.btn-search {
+  background: #028a8a;
+  color: #ffffff;
+}
+.btn-search:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+  background-color: #f75302;
+}
+
+/* FORMS */

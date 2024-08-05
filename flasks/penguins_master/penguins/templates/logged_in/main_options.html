@@ -1,0 +1,102 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/main-menu-style.css" type="text/css">
+<title>Penguins - Main Menu</title>
+<form method="POST">
+  <div class="menu-options">
+  <div class="main-menu-screen">
+  <div class="app-title">
+    <h1>Main Menu</h1>
+  </div>
+
+  <div class="menu-form">
+  <div class="control-group">
+    <input type="submit" value="LDAP" class="btn btn-ldap" name="submit_button">
+  </div>
+
+  <div class = {{ setCMDBVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="CMDB" class="btn btn-cmdb" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setCMDBVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="TMC" class="btn btn-tmc" name="submit_button">
+    </div>
+  </div>
+</div>
+
+<div class = {{ setCMDBVisibility }}>
+  <div class="control-group">
+    <input type="submit" value="Agents Health Status" class="btn btn-fisto_roboto" name="submit_button">
+  </div>
+</div>
+
+  <div class = {{ setCMDBVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Reports" class="btn btn-reports" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setCMDBVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Graphs" class="btn btn-graph" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setCMDBVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Patch Page" class="btn btn-patch" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setDecommdbVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Decomm Servers" class="btn btn-decomm" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setAdminVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Vsphere" class="btn btn-vsphere" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setAdminVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Live Flasky Messages" class="btn btn-live-messages" name="submit_button">
+    </div>
+  </div>
+
+  <div class = {{ setAdminVisibility }}>
+    <div class="control-group">
+      <input type="submit" value="Ansible" class="btn btn-ansible" name="submit_button">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <input type="submit" value="Useful Links" class="btn btn-help" name="submit_button">
+  </div>
+
+  <div class = {{ setAdminVisibility }}>
+    <div class="control-group">
+      <button name="submit_button" value="Burger" type="submit" class="btn btn-burger"></button>
+    </div>
+  </div>
+
+  <div class="control-group control-group-last-btn">
+    <input type="submit" value="Log Out" class="btn btn-logout" name="submit_button">
+  </div>
+
+  <div class="control-group">
+    {% for message in get_flashed_messages() %}
+    <div class="flash">
+      <font color="red">{{ message }}</font>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  </div>
+  </div>
+</form>

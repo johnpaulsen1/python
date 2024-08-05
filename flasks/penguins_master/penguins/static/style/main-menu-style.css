@@ -1,0 +1,326 @@
+body {
+  background-image: linear-gradient(to right, #03746e, #fff);
+  font-family: Arial;
+  font-size: 20px;
+  padding: 50px;
+}
+
+.main-menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 115%;
+}
+
+.btn-ldap {
+  background: url("/static/images/ldap2.png") center  #118973;
+  background-size: 18%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-ldap:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-burger {
+  background: url("/static/images/burger2.png") center #ff6336;
+  background-size: 30%;
+  background-position: 50% 46%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+}
+.btn-burger:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-cmdb {
+  background: url("/static/images/database.png") center #c44dff;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-cmdb:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-satquery {
+  background: url("/static/images/redhatsatellite.png") center  #ff3737;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-satquery:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-fisto_roboto {
+  background: url("/static/images/robot2.png") center  #dadada;
+  background-size: 17%;
+  background-position: 99% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #292929;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-fisto_roboto:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-graph {
+  background: url("/static/images/graph.png") center  #4b948d;
+  background-size: 17%;
+  background-position: 97% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-graph:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-ansible {
+  background: url("/static/images/ansible1.png") center  #b30000;
+  background-size: 23%;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-ansible:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-decomm {
+  background: url("/static/images/delete1.png") center  #fc6b6b;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #202020;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-decomm:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-decomm-db {
+  background: url("/static/images/decomm_database1.png") center  #ff9666;
+  background-size: 17%;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #202020;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-decomm-db:hover {
+  background: url("/static/images/decomm_database1.png") center  #1ae4e4;
+  background-size: 17%;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #202020;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-vsphere {
+  background: url("/static/images/vsphere1.png") center  #7c6bc9;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-vsphere:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-live-messages {
+  background: url("/static/images/live_messages.png") center  #4b948d;
+  background-size: 17%;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #ffffff;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-live-messages:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-patch {
+  background: url("/static/images/patch1.png") center  #f0c09c;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #292929;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-patch:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-help {
+  background: url("/static/images/help1.png") center  #424242;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #f7f7f7;
+  text-shadow:
+    -0.5px -0.5px 0 #292929,
+    0.5px -0.5px 0 #292929,
+    -0.5px 0.5px 0 #292929,
+    0.5px 0.5px 0 #292929;
+}
+.btn-help:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-reports {
+  background: url("/static/images/report1.png") center #ffa64d;
+  background-size: 17%;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #292929;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-reports:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.btn-tmc {
+  background: url("/static/images/tmc1.png") center #ff9999;
+  background-size: 17%;
+  background-position: 95% 10%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  height: 50px;
+  color: #292929;
+  text-shadow:
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;
+}
+.btn-tmc:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+
+.control-group-last-btn {
+  margin-bottom: 35px;
+}

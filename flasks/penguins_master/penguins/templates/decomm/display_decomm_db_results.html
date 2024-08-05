@@ -1,0 +1,82 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/decomm-style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/table-fixed-header-style.css" type="text/css">
+
+<head>
+  <title>Penguins - Decomm DB Results</title>
+</head>
+
+
+<body class="decomm-body-db-display">
+  <form method="POST">
+    <!-- <div class="query_decomm_db_menu"> -->
+    <div class="decomm-show-info-menu-screen">
+    <div class="decomm-app-title">
+      <h1>{{ heading_value }}</h1>
+    </div>
+    <div class="menu-form">
+    <div class="control-group">
+      <div class = "db_text_results">
+        <div class="control-group-small">
+
+          <div class="tableFixHead">
+          <table class="centre">
+            <thead>
+              <tr>
+                <th> date_time_actioned </th>
+                <th> change_number </th>
+                <th> host_name </th>
+                <th> puppet_decommed </th>
+                <th> chef_decommed </th>
+                <th> vsphere_decommed </th>
+                <th> satellite_decommed </th>
+                <th> physical_decommed </th>
+                <th> tmc_db_decommed </th>
+                <th> actioned_by </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key, valuesList in selectResultsDict.items() %}
+              <tr>
+                {% for value in valuesList %}
+                  <td>{{ value }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+           </table>
+         </div>
+
+       </div>
+       <div class="control-group-small db_text_results">
+         <span style="text-decoration: underline;">
+           Total Records:
+         </span>
+         <span style="font-weight: bold; font-size: 20px;">
+           {{ total_records }}
+         </span>
+       </div>
+     </div>
+     <div class="control-group">
+       <div class="control-group-small">
+         <input type="submit" value="Download" class="btn btn-decomm-db-alt1" name="submit_button">
+       </div>
+     </div>
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-decomm-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-decomm-logout" name="submit_button">
+    </div>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    <!-- </div> -->
+  </form>
+</body>

@@ -1,0 +1,198 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/graphs-style.css" type="text/css">
+<head>
+  <title>{{ title }}</title>
+  <script src="/static/javascript/colour_randomiser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js" integrity="sha512-vJLAMsHIpI7ORUMpudTJNz+wRNnPQAkHVlnpgpVxXI0lPnKcQ38Psu0APJ2r3nhhBHNIcQPRVrlkHiAeQHADTA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <form method="POST">
+    <div class="graph_menu-screen">
+    <center>
+      <h2>{{ title }}</h2>
+    </center>
+    <div class="control-group-small radio-buttons-label">
+      <p>Please select graph type:</p>
+    </div>
+    <div class="control-group-small general-radio-buttons">
+      <input type="radio" id="bar" name="graph_type" value="Bar Graph" checked onclick="handleClick(this);">
+      <label class="radio-labels" for="bar">Bar Graph</label><br>
+
+      <input type="radio" id="pie" name="graph_type" value="Pie Graph" onclick="handleClick(this);">
+      <label class="radio-labels" for="pie">Pie Graph</label><br>
+    </div>
+    <center>
+      <div class="control-group">
+        <canvas id="chart"></canvas>
+      </div>
+      <div class="control-group">
+        <input type="submit" value="Back" class="floated_left_btn btn btn-back" name="submit_button">
+        <input type="submit" value="Log Out" class="floated_right_btn btn btn-logout" name="submit_button">
+      </div>
+    </center>
+    <script>
+
+    var prev_radio_value = 0;
+
+    function handleClick(myRadio) {
+      var static_bar_value = "Bar Graph"
+      var static_pie_value = "Pie Graph"
+
+      if (prev_radio_value != static_bar_value && myRadio.value == static_bar_value){
+        window.location.href = "{{url_for('bar')}}"
+        prev_radio_value = myRadio.value
+      }
+      else if (prev_radio_value != static_pie_value && myRadio.value == static_pie_value){
+        window.location.href = "{{url_for('pie')}}"
+        prev_radio_value = myRadio.value
+      }
+    }
+
+    var canvasChart = document.getElementById('chart');
+    var ctx = canvasChart.getContext('2d');
+    var max_value = "{{ max }}"
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          {% for label in labels %}
+           "{{ label }}",
+          {% endfor %}
+        ],
+        datasets: [{
+          label: '{{ legend }}',
+          data: [
+            {% for value in values %}
+             "{{ value }}",
+            {% endfor %}
+          ],
+          backgroundColor: [
+            {% for value in values %}
+             getRandomCyanColour(),
+            {% endfor %}
+          ],
+          borderColor: [
+            {% for value in values %}
+             getRandomOrangeColour(),
+            {% endfor %}
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        animation: {
+          duration: 0,
+          onComplete: function() {
+            var chartInstance = this.chart,
+              ctx = chartInstance.ctx;
+
+            ctx.font = Chart.helpers.fontString(
+                                      Chart.defaults.defaultFontSize=14,
+                                      Chart.defaults.defaultFontStyle="bold",
+                                      Chart.defaults.global.defaultFontFamily
+                                    );
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+
+            this.data.datasets.forEach(function(dataset, i) {
+              var meta = chartInstance.controller.getDatasetMeta(i);
+              meta.data.forEach(function(bar, index) {
+                var data = dataset.data[index];
+                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+              });
+            });
+          }
+        },
+        hover: {
+          animationDuration: 0,
+        },
+        responsiveAnimationDuration: 0,
+        tooltips: {
+          enabled: false
+        },
+        legend: {
+          display: false
+        },
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: max_value,
+              fontColor: '#a64b00'
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: '#a64b00',
+              major: {
+                enabled: true
+              },
+              padding: 0,
+              color: '#a64b00',
+              autoSkip: false
+            }
+          }]
+        },
+        title: {
+          display: true,
+          text: "{{ legend }}",
+          fontColor: "#a64b00",
+          fontSize: 20
+        }
+      }
+    });
+
+    canvasChart.onclick = function(e) {
+      var selected_bar = myChart.getElementAtEvent(e);
+      if (! selected_bar.length) return;
+      var setURL = "{{ url_for('set_graph_results_decomm_db') }}";
+      var displayURL = "{{ url_for('display_search_info_decomm_db') }}";
+      var displayAllURL = "{{ url_for('decomm_show_all_decomm_db') }}";
+      var label = selected_bar[0]._model.label;
+      var title = "{{ title }}"
+
+      if (label != 'Total' && typeof label !== 'undefined'){
+        $.ajax({
+          type: "POST",
+          url: setURL,
+          contentType: "application/json",
+          data: JSON.stringify({search_for: label, graph_title: title}),
+          dataType: "json",
+          success: function(response) {
+            console.log(response);
+            window.open(displayURL);
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+      }
+      else if (label == 'Total' && typeof label !== 'undefined' && title.includes('Date') == true){
+        $.ajax({
+          type: "POST",
+          url: setURL,
+          contentType: "application/json",
+          data: JSON.stringify({search_for: label, graph_title: title}),
+          dataType: "json",
+          success: function(response) {
+            console.log(response);
+            window.open(displayURL);
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+      }
+      else if (label == 'Total' && typeof label !== 'undefined' && title.includes('Date') == false){
+        window.open(displayAllURL);
+      }
+    }
+
+    </script>
+    </div>
+  </form>
+</body>

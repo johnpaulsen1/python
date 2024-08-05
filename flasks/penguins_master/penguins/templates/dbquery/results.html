@@ -1,0 +1,42 @@
+<!doctype html>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="/static/style/dbquery-style.css" type="text/css">
+<title>Penguins - DB Query Results</title>
+<body class="dbquery-body">
+  <form method="POST">
+    <div class="menu">
+    <div class="menu-screen dbquery-menu-bg">
+    <div class="dbquery-app-title">
+      <h1>DB Query Results</h1>
+    <div class="control-group">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        <font color="red">{{ message }}</font>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+    </div>
+        <div class="text_left floated_right_text">
+          <ol class="nobull">
+          	<p>Current hosts in our environment: <br>
+          	   RHEL5: {{ amountofRHEL5 }}<br>
+          	   RHEL6: {{ amountofRHEL6 }}<br>
+          	   RHEL7: {{ amountofRHEL7 }}<br>
+          	</p>
+            {% for i in latestHosts %}
+              <li> {{ i }} </li>
+            {% endfor %}
+          </ol>
+        </div>
+    <div class="control-group">
+      <input type="submit" value="Back" class="floated_left_btn btn btn-dbq-back" name="submit_button">
+      <input type="submit" value="Log Out" class="floated_right_btn btn btn-dbq-logout" name="submit_button">
+    </div>
+    </div>
+    </div>
+    </div>
+  </form>
+</body>

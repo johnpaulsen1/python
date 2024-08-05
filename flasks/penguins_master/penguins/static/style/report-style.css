@@ -1,0 +1,20 @@
+.body {
+  background-image: linear-gradient(to right, #00a69d, #fff);
+}
+
+.btn-upload {
+  background: #00a69d;
+  color: #ffffff;
+}
+.btn-upload:hover {
+  background-color: #009991;
+  cursor: pointer;
+}
+
+.menu-screen {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+}

@@ -1,0 +1,47 @@
+#hostfield-textlabel {
+  display: block;
+  font-weight: bold;
+}
+
+#hostfield-textarea {
+  vertical-align: middle;
+}
+
+#ansible-user {
+  font-weight: bold;
+}
+
+#playbook-list {
+  display: block;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
+.logging_window {
+    display: inline-block;
+    text-align: left;
+    padding: 9.5px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: auto;
+    margin: auto;
+}
+
+.ansible-menu-screen {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  border: orange solid 5px;
+  height: auto;
+  width: 90%;
+}
